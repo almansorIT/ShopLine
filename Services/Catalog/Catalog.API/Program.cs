@@ -1,2 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+
+app.Run();
+
