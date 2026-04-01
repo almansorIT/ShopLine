@@ -1,4 +1,5 @@
 namespace Catalog.API.Products.CreateProduct;
+
 using MediatR;
 public record CreateProductCommand(
     string Name,
