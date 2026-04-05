@@ -1,8 +1,5 @@
 namespace Catalog.API.Products.CreateProduct;
 
-using BuildingBlock.CQRS;
-using Catalog.API.Models;
-
 public record CreateProductCommand(
     string Name,
     List<string> Category,
@@ -13,7 +10,7 @@ public record CreateProductCommand(
 
 public record CreateProductCommandResponse(Guid Id);
 
-public class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, CreateProductCommandResponse>
+public class CreateProductCommandHandler(IDocumentSession DocumentSession) : ICommandHandler<CreateProductCommand, CreateProductCommandResponse>
 {
     public async Task<CreateProductCommandResponse> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
@@ -27,8 +24,10 @@ public class CreateProductCommandHandler : ICommandHandler<CreateProductCommand,
             ImageFile = command.ImageFile
         };
         //save to database
-        
+        DocumentSession.Store(product);
+        await DocumentSession.SaveChangesAsync(cancellationToken);
+
         //return ProductResult
-        return new CreateProductCommandResponse(Guid.NewGuid());
+        return new CreateProductCommandResponse(product.Id);
     }
 }

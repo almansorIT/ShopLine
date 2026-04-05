@@ -8,9 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="Carter" Version="8.0" />
+    <PackageReference Include="Marten" Version="8.28.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.23" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-    <ProjectReference Include="..\..\..\BuildingBlock\BuildingBlock\BuildingBlock.csproj"/>
+    <ProjectReference Include="..\..\..\BuildingBlock\BuildingBlock\BuildingBlock.csproj" />
   </ItemGroup>
 
 </Project>
